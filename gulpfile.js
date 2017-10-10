@@ -1,8 +1,6 @@
 const childProcess = require('child_process');
-const fs = require('fs');
 const path = require('path');
 
-const concat = require('gulp-concat');
 const gulp = require('gulp');
 const jshint = require('gulp-jshint');
 const pump = require('pump');
@@ -13,25 +11,14 @@ const gulpWebpack = require('gulp-webpack');
 const webpack = require('webpack');
 const tslint = require('gulp-tslint');
 
-const OUTPUT_FILE = 'LogoApp.js';
-const OUTPUT_DIR = 'public/bin';
-
-function copyFile(srcFile, destFile) {
-  fs.writeFileSync(destFile, fs.readFileSync(srcFile));
-}
 
 gulp.task('default', sequence('test'));
 gulp.task('test', sequence('build', 'lint:test', 'unit-test', 'unit-test:min'));
-gulp.task('build', sequence('tslint', 'webpack', 'compress:logo-js', 'copy'));
-gulp.task('build:app', sequence('lint:app', 'concat', 'compress:logo-app'));
+gulp.task('build', sequence('tslint', 'webpack', 'compress'));
 
-gulp.task('copy', () => {
-  copyFile('dist/Logo.js', `${OUTPUT_DIR}/Logo.js`);
-  copyFile('dist/Logo.min.js', `${OUTPUT_DIR}/Logo.min.js`);
-});
 
 gulp.task('webpack', () => {
-  return gulp.src('src/Logo.ts')
+  return gulp.src('src/Canvas.ts')
   .pipe(gulpWebpack({
     module: {
       rules: [{
@@ -44,8 +31,8 @@ gulp.task('webpack', () => {
       extensions: [ ".tsx", ".ts", ".js" ]
     },
     output: {
-      filename: 'Logo.js',
-      library: 'LogoJS',
+      filename: 'LogoCanvas.js',
+      library: 'LogoCanvas',
       libraryExport: 'default',
       path: path.resolve(__dirname, 'dist')
     }
@@ -62,22 +49,8 @@ function compress(src, dest, done) {
   ], done);
 }
 
-gulp.task('compress:logo-app', (done) => {
-  compress(`${OUTPUT_DIR}/${OUTPUT_FILE}`, OUTPUT_DIR, done);
-});
-
-gulp.task('compress:logo-js', (done) => {
-  compress('dist/Logo.js', 'dist', done);
-});
-
-gulp.task('concat', () => {
-  return gulp.src([
-    'logo-app/LogoApp.js', 
-    'logo-app/CanvasFactory.js', 
-    'logo-app/LogoController.js'
-  ])
-  .pipe(concat(OUTPUT_FILE))
-  .pipe(gulp.dest(OUTPUT_DIR));
+gulp.task('compress', (done) => {
+  compress('dist/LogoCanvas.js', 'dist', done);
 });
 
 gulp.task('tslint', () => {
@@ -97,10 +70,6 @@ function lint(src) {
 
 gulp.task('lint:test', () => {
   return lint(['spec/**/*.js']);
-});
-
-gulp.task('lint:app', () => {
-  return lint(['logo-app/**/*.js']);
 });
 
 function karma(config) {

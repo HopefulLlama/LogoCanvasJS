@@ -5,7 +5,7 @@
     "module": "commonjs",
     "jsx": "react",
     "target": "ES5",
-    "lib": ["ES6", "ES7", "ES2017"],
+    "lib": ["ES6", "ES7", "ES2017", "DOM"],
     "allowJs": true
   }
 }
