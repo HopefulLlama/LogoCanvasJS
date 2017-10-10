@@ -1,0 +1,43 @@
+{
+  "name": "logocanvasjs",
+  "version": "0.0.0",
+  "description": "HTML5 Canvas that draws LogoJS",
+  "main": "index.js",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sequence": "^0.4.6",
+    "gulp-tslint": "^8.1.2",
+    "gulp-uglify-es": "^0.1.3",
+    "gulp-webpack": "^1.5.0",
+    "jasmine-core": "^2.8.0",
+    "jshint": "^2.9.5",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.0",
+    "pump": "^1.0.2",
+    "ts-loader": "^2.3.7",
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.3",
+    "webpack": "^3.6.0"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HopefulLlama/LogoCanvasJS.git"
+  },
+  "keywords": [
+    "Logo",
+    "JS"
+  ],
+  "author": "Jonathan Law <jonlaw10170@gmail.com> (https://hopefulllama-portfolio.herokuapp.com/)",
+  "license": "GNU",
+  "bugs": {
+    "url": "https://github.com/HopefulLlama/LogoCanvasJS/issues"
+  },
+  "homepage": "https://github.com/HopefulLlama/LogoCanvasJS#readme"
+}
