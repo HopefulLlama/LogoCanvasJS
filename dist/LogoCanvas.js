@@ -88,13 +88,30 @@ var LogoCanvas = /** @class */ (function () {
         this.domElement.width = this.domElement.clientWidth;
         this.domElement.height = this.domElement.clientHeight;
     };
-    LogoCanvas.prototype.drawLine = function (journey) {
-        if (journey.start.penDown === true && journey.start.penDown === true) {
-            this.context.beginPath();
-            this.context.moveTo(journey.start.position.x, journey.start.position.y);
-            this.context.lineTo(journey.end.position.x, journey.end.position.y);
-            this.context.stroke();
-        }
+    LogoCanvas.prototype.reduceJourney = function (journey) {
+        return journey.reduce(function (accumulator, currentValue, index, array) {
+            if (index !== array.length - 1) {
+                accumulator.push({
+                    start: currentValue,
+                    end: array[index + 1]
+                });
+            }
+            return accumulator;
+        }, [])
+            .filter(function (drawData) {
+            return (drawData.start.penDown === true &&
+                drawData.end.penDown === true &&
+                (drawData.start.colour === drawData.end.colour));
+        });
+    };
+    LogoCanvas.prototype.drawJourney = function (journey) {
+        this.reduceJourney(journey).forEach(this.drawLine);
+    };
+    LogoCanvas.prototype.drawLine = function (drawData) {
+        this.context.beginPath();
+        this.context.moveTo(drawData.start.position.x, drawData.start.position.y);
+        this.context.lineTo(drawData.end.position.x, drawData.end.position.y);
+        this.context.stroke();
     };
     return LogoCanvas;
 }());

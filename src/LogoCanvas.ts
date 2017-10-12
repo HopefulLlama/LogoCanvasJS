@@ -1,3 +1,20 @@
+interface Position {
+  x: number;
+  y: number;
+  angle: number;
+}
+
+interface Waypoint {
+  position: Position;
+  penDown: boolean;
+  colour: string;
+}
+
+interface DrawData {
+  start: Waypoint;
+  end: Waypoint;
+}
+
 export default class LogoCanvas {
   domElement: HTMLCanvasElement;
   context: CanvasRenderingContext2D;
@@ -8,7 +25,7 @@ export default class LogoCanvas {
     this.resize();
 
     window.addEventListener('resize', () => {
-    	this.resize();
+      this.resize();
     });
   }
 
@@ -21,12 +38,33 @@ export default class LogoCanvas {
     this.domElement.height = this.domElement.clientHeight;
   }
 
-  drawLine(journey: any): void {
-    if(journey.start.penDown === true && journey.start.penDown === true) {
-      this.context.beginPath();
-      this.context.moveTo(journey.start.position.x, journey.start.position.y);
-      this.context.lineTo(journey.end.position.x, journey.end.position.y);
-      this.context.stroke();
-    }
+  reduceJourney(journey: Waypoint[]): DrawData[] {
+    return journey.reduce((accumulator: DrawData[], currentValue: Waypoint, index: number, array: Waypoint[]) => {
+      if(index !== array.length - 1) {
+        accumulator.push({
+          start: currentValue,
+          end: array[index + 1]
+        });
+      }
+      return accumulator;
+    }, [])
+    .filter((drawData: DrawData) => {
+      return (
+        drawData.start.penDown === true && 
+        drawData.end.penDown === true && 
+        (drawData.start.colour === drawData.end.colour)
+      )
+    });
+  } 
+
+  drawJourney(journey: Waypoint[]): void {
+    this.reduceJourney(journey).forEach(this.drawLine);
+  }
+
+  drawLine(drawData: DrawData): void {
+    this.context.beginPath();
+    this.context.moveTo(drawData.start.position.x, drawData.start.position.y);
+    this.context.lineTo(drawData.end.position.x, drawData.end.position.y);
+    this.context.stroke();
   }
 }
