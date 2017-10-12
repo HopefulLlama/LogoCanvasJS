@@ -1,13 +1,13 @@
-export default class Canvas {
+export default class LogoCanvas {
   domElement: HTMLCanvasElement;
   context: CanvasRenderingContext2D;
 
   constructor(id: string) {
     this.domElement = <HTMLCanvasElement> document.getElementById(id);
-    this.context = this.domElement.getContext("2d");
+    this.context = this.domElement.getContext('2d');
     this.resize();
 
-    window.addEventListener("resize", () => {
+    window.addEventListener('resize', () => {
     	this.resize();
     });
   }

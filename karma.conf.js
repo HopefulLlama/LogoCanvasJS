@@ -4,7 +4,7 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
     files: [
       'dist/LogoCanvas.js',
-      'spec/unit/**/*Spec.js'
+      'spec/it/**/*Spec.js'
     ]
   });
 };

@@ -71,24 +71,24 @@ var LogoCanvas =
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Canvas = /** @class */ (function () {
-    function Canvas(id) {
+var LogoCanvas = /** @class */ (function () {
+    function LogoCanvas(id) {
         var _this = this;
         this.domElement = document.getElementById(id);
-        this.context = this.domElement.getContext("2d");
+        this.context = this.domElement.getContext('2d');
         this.resize();
-        window.addEventListener("resize", function () {
+        window.addEventListener('resize', function () {
             _this.resize();
         });
     }
-    Canvas.prototype.clear = function () {
+    LogoCanvas.prototype.clear = function () {
         this.context.clearRect(0, 0, this.domElement.width, this.domElement.height);
     };
-    Canvas.prototype.resize = function () {
+    LogoCanvas.prototype.resize = function () {
         this.domElement.width = this.domElement.clientWidth;
         this.domElement.height = this.domElement.clientHeight;
     };
-    Canvas.prototype.drawLine = function (journey) {
+    LogoCanvas.prototype.drawLine = function (journey) {
         if (journey.start.penDown === true && journey.start.penDown === true) {
             this.context.beginPath();
             this.context.moveTo(journey.start.position.x, journey.start.position.y);
@@ -96,9 +96,9 @@ var Canvas = /** @class */ (function () {
             this.context.stroke();
         }
     };
-    return Canvas;
+    return LogoCanvas;
 }());
-exports.default = Canvas;
+exports.default = LogoCanvas;
 
 
 /***/ })

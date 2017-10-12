@@ -13,12 +13,12 @@ const tslint = require('gulp-tslint');
 
 
 gulp.task('default', sequence('test'));
-gulp.task('test', sequence('build', 'lint:test', 'unit-test', 'unit-test:min'));
+gulp.task('test', sequence('build', 'lint:test', 'it-test', 'it-test:min'));
 gulp.task('build', sequence('tslint', 'webpack', 'compress'));
 
 
 gulp.task('webpack', () => {
-  return gulp.src('src/Canvas.ts')
+  return gulp.src('src/LogoCanvas.ts')
   .pipe(gulpWebpack({
     module: {
       rules: [{
@@ -77,10 +77,10 @@ function karma(config) {
   childProcess.execSync(`node ${karma} start ${config} --single-run`, {stdio: [0,1,2]});
 }
 
-gulp.task('unit-test', () => {
+gulp.task('it-test', () => {
   karma('');
 });
 
-gulp.task('unit-test:min', () => {
+gulp.task('it-test:min', () => {
   karma('karma-min.conf.js');
 });
