@@ -108,6 +108,7 @@ var LogoCanvas = /** @class */ (function () {
         this.reduceJourney(journey).forEach(this.drawLine);
     };
     LogoCanvas.prototype.drawLine = function (drawData) {
+        this.context.strokeStyle = drawData.start.colour;
         this.context.beginPath();
         this.context.moveTo(drawData.start.position.x, drawData.start.position.y);
         this.context.lineTo(drawData.end.position.x, drawData.end.position.y);

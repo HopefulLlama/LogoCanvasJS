@@ -62,6 +62,8 @@ export default class LogoCanvas {
   }
 
   drawLine(drawData: DrawData): void {
+    this.context.strokeStyle = drawData.start.colour;
+
     this.context.beginPath();
     this.context.moveTo(drawData.start.position.x, drawData.start.position.y);
     this.context.lineTo(drawData.end.position.x, drawData.end.position.y);

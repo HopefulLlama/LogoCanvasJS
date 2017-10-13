@@ -73,6 +73,22 @@ describe('LogoCanvas', () => {
       expect(mockContext.lineTo).toHaveBeenCalledWith(10, 10);
     });
 
+    it('should set the context strokeStyle to the start colour', () => {
+      testee.drawLine({
+        start: {position: {x: 0, y: 0}, penDown: true, colour: '#000000'},
+        end: {position: {x: 0, y: 0}, penDown: true, colour: '#000000'}
+      });
+
+      expect(mockContext.strokeStyle).toBe('#000000');
+
+      testee.drawLine({
+        start: {position: {x: 0, y: 0}, penDown: true, colour: '#FF0000'},
+        end: {position: {x: 0, y: 0}, penDown: true, colour: '#FF0000'}
+      });
+
+      expect(mockContext.strokeStyle).toBe('#FF0000');
+    });
+
     it('should reduce the journey, then draw a line for each part of a journey', () => {
       let mockJourney = [1, 2, 3];
 
