@@ -5,7 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+- Nothing yet
+
+## [0.0.1] 2017-10-13
 ### Added
 - First release 
 
-[Unreleased]: https://github.com/HopefulLlama/LogoCanvasJS/compare/279f4126ac4998704b9673ffe3dea328a002aca9...HEAD
+[Unreleased]: https://github.com/HopefulLlama/LogoCanvasJS/compare/v0.0.1...HEAD
+[0.0.1]: https://github.com/HopefulLlama/LogoCanvasJS/compare/v279f4126ac4998704b9673ffe3dea328a002aca9...v0.0.1
