@@ -58,7 +58,7 @@ export default class LogoCanvas {
   } 
 
   drawJourney(journey: Waypoint[]): void {
-    this.reduceJourney(journey).forEach(this.drawLine);
+    this.reduceJourney(journey).forEach(this.drawLine.bind(this));
   }
 
   drawLine(drawData: DrawData): void {

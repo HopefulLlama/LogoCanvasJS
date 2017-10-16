@@ -105,7 +105,7 @@ var LogoCanvas = /** @class */ (function () {
         });
     };
     LogoCanvas.prototype.drawJourney = function (journey) {
-        this.reduceJourney(journey).forEach(this.drawLine);
+        this.reduceJourney(journey).forEach(this.drawLine.bind(this));
     };
     LogoCanvas.prototype.drawLine = function (drawData) {
         this.context.strokeStyle = drawData.start.colour;

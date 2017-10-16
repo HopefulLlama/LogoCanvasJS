@@ -5,7 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-- Nothing yet
+### Fixed
+- #1: Drawing lines for a journey now works
 
 ## [0.0.1] 2017-10-13
 ### Added

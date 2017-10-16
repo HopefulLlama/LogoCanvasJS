@@ -90,17 +90,28 @@ describe('LogoCanvas', () => {
     });
 
     it('should reduce the journey, then draw a line for each part of a journey', () => {
-      let mockJourney = [1, 2, 3];
+      const mockJourney = [
+        {position: {x: 0, y: 0, angle: 0}, penDown: true, colour: '#000000'},
+        {position: {x: 0, y: 1, angle: 0}, penDown: true, colour: '#000000'},
+        {position: {x: 0, y: 2, angle: 0}, penDown: true, colour: '#000000'},
+        {position: {x: 0, y: 3, angle: 0}, penDown: true, colour: '#000000'}
+      ];
 
-      testee.reduceJourney = jasmine.createSpy('reduceJourney').and.returnValue(mockJourney);
-      testee.drawLine = jasmine.createSpy('drawLine');
+      spyOn(testee, 'reduceJourney').and.callThrough();
+      spyOn(testee, 'drawLine').and.callThrough();
 
       testee.drawJourney(mockJourney);
 
       expect(testee.reduceJourney).toHaveBeenCalledWith(mockJourney);
       expect(testee.reduceJourney.calls.count()).toBe(1);
 
-      expect(testee.drawLine.calls.count()).toBe(3);
+      expect(testee.drawLine.calls.count()).toBe(3);      
+
+      // Test the context of the function call is correct
+      expect(mockContext.beginPath.calls.count()).toBe(3);
+      expect(mockContext.moveTo.calls.count()).toBe(3);
+      expect(mockContext.lineTo.calls.count()).toBe(3);
+      expect(mockContext.stroke.calls.count()).toBe(3);
     });
   });
 
