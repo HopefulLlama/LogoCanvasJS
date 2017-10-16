@@ -1,6 +1,6 @@
 {
   "name": "logocanvasjs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "HTML5 Canvas that draws LogoJS",
   "main": "index.js",
   "devDependencies": {

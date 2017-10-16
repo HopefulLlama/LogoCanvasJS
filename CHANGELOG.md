@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+- Nothing yet
+
+## [0.0.2] 2017-10-16
 ### Fixed
 - #1: Drawing lines for a journey now works
 
@@ -12,5 +15,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - First release 
 
-[Unreleased]: https://github.com/HopefulLlama/LogoCanvasJS/compare/v0.0.1...HEAD
+[Unreleased]: https://github.com/HopefulLlama/LogoCanvasJS/compare/v0.0.2...HEAD
+[0.0.2]: https://github.com/HopefulLlama/LogoCanvasJS/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/HopefulLlama/LogoCanvasJS/compare/v279f4126ac4998704b9673ffe3dea328a002aca9...v0.0.1
